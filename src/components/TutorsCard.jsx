@@ -11,8 +11,11 @@ const tutorsData = async () => {
 const TutorsCard = async () => {
     const tutorDataRes = await tutorsData()
     return (
-        <div className=' w-7xl mx-auto mt-10'>
-            <h1 className='font-bold text-4xl'>Available Tutor</h1>
+        <div className='md:w-7xl mx-auto mt-20'>
+            <div className='text-center space-y-2'>
+                <h1 className='font-bold text-4xl'>Available Tutor</h1>
+                <p>Connect with qualified tutors who provide personalized guidance to help you learn faster and succeed with confidence.</p>
+            </div>
             <div className='md:grid grid-cols-3 gap-4 mt-10'>
                 {
                     tutorDataRes.map(tutor => (

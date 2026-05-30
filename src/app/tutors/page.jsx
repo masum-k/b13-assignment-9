@@ -14,7 +14,9 @@ const AllTutors = async () => {
 
     return (
         <div className=' w-7xl mx-auto mt-10'>
-            <h1 className='font-bold text-4xl'>Available Tutor</h1>
+            <div className='text-center'>
+                <h1 className='font-bold text-4xl'>Available Tutor</h1>
+            </div>
             <div className='md:grid grid-cols-3 gap-4 mt-10'>
                 {
                     tutorDataRes.map(tutor => (
