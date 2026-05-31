@@ -2,7 +2,7 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div className='md:w-7xl mx-auto mt-20'>
+        <div className='md:w-7xl mx-auto mt-20 mb-20'>
             <div className='text-center space-y-2 mb-10'>
                 <h1 className='font-bold text-4xl'>Frequently Asked Questions</h1>
                 <p>Quick answers to common questions about finding tutors, booking sessions, and learning online.</p>
@@ -10,7 +10,7 @@ const Faq = () => {
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                 <input type="radio" name="my-accordion-2" defaultChecked />
-                <div className="collapse-title font-semibold">
+                <div className="collapse-title text-xl font-semibold">
                     How do I find the right tutor?
                 </div>
                 <div className="collapse-content text-sm">
@@ -20,7 +20,7 @@ const Faq = () => {
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title font-semibold">
+                <div className="collapse-title text-xl font-semibold">
                     Can I schedule lessons at flexible times?
                 </div>
                 <div className="collapse-content text-sm">
@@ -30,7 +30,7 @@ const Faq = () => {
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title font-semibold">
+                <div className="collapse-title text-xl font-semibold">
                     Are the lessons conducted online?
                 </div>
                 <div className="collapse-content text-sm">
@@ -40,7 +40,7 @@ const Faq = () => {
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title font-semibold">
+                <div className="collapse-title text-xl font-semibold">
                     What subjects are available on MediQueue?
                 </div>
                 <div className="collapse-content text-sm">
@@ -50,7 +50,7 @@ const Faq = () => {
 
             <div className="collapse collapse-arrow bg-base-100 border border-base-300">
                 <input type="radio" name="my-accordion-2" />
-                <div className="collapse-title font-semibold">
+                <div className="collapse-title text-xl font-semibold">
                     Can beginners join the courses?
                 </div>
                 <div className="collapse-content text-sm">
