@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image';
-// import { authClient } from '@/lib/auth-client';
+import { authClient } from '@/lib/auth-client';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -30,7 +30,6 @@ const LoginPage = () => {
         } else {
             toast.success("Login Successful")
         }
-
     }
 
     return (
