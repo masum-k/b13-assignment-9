@@ -30,7 +30,7 @@ const RegisterPage = () => {
         });
 
         if (error) {
-            toast.warning("Create an Account")
+            toast.error(error.message)
         }
         else if (password.lenght < 8) {
             toast.warning("Password must be 8 charachter long")
@@ -104,9 +104,10 @@ const RegisterPage = () => {
                     {
                         errors.password && <p className='text-red-500'>{errors.password.message}</p>
                     }
-                    <button className="btn bg-[#7AA93C] text-white mt-4">Register</button>
-                    <div className='mt-2'>
 
+                    <button className="btn bg-[#7AA93C] text-white mt-4">Register</button>
+
+                    <div className='mt-2'>
                         <p className='font-bold'>Already an acoount? <Link className='text-blue-500' href="/login">Login</Link></p>
                     </div>
                 </fieldset>
