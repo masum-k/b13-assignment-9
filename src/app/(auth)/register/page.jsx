@@ -12,21 +12,18 @@ const RegisterPage = () => {
 
     const [toggle, setToggle] = useState(false)
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm()
+    const { register, handleSubmit, formState: { errors }, } = useForm()
 
 
-    const handleLogin = async (data) => {
-        const { name, email, password } = data
+    const handleRegister = async (data) => {
+        
+        const { name, email, password, image } = data
 
         const { data: res, error } = await authClient.signUp.email({
             name: name, // required
             email: email, // required
             password: password, // required
-            callbackURL: "/",
+            image: image
         });
 
         if (error) {
@@ -44,7 +41,7 @@ const RegisterPage = () => {
 
     return (
         <div className='flex flex-col justify-center items-center h-screen'>
-            <form onSubmit={handleSubmit(handleLogin)}>
+            <form onSubmit={handleSubmit(handleRegister)}>
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 relative">
                     <div className='text-center mb-5 space-y-1'>
                         <h1 className='text-2xl font-medium'>Join <span className='text-[#7AA93C]'>MediQueue</span></h1>
