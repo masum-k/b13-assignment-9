@@ -1,10 +1,11 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
-import { authClient} from '@/lib/auth-client';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form"
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+
 
 const LoginPage = () => {
 
@@ -16,17 +17,21 @@ const LoginPage = () => {
         formState: { errors },
     } = useForm()
 
-
     const handleLogin = async (data) => {
         const { email, password } = data
 
         const { data: res, error } = await authClient.signIn.email({
             email: email, // required
             password: password, // required
-            callbackURL: "/",
+            callbackURL: ('/')
         });
+
+        const { data: tokenData } = await authClient.token()
+        console.log(tokenData)
+
         if (error) {
             toast.warning("Create an Account")
+
         } else {
             toast.success("Login Successful")
         }

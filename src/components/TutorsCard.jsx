@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+
 const tutorsData = async () => {
     const res = await fetch("http://localhost:3001/tutors")
     const data = res.json()
