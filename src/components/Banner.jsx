@@ -10,9 +10,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
@@ -23,7 +24,8 @@ const Banner = () => {
                 pagination={{
                     dynamicBullets: true,
                 }}
-                modules={[Pagination]}
+                navigation={true}
+                modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
                 <SwiperSlide>
@@ -48,16 +50,16 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="relative md:w-full w-3xl">
                         <div className='absolute ml-20 mt-10 space-y-2'>
-                            <h1 className='text-4xl font-bold'>Learn From Expert Tutors</h1>
+                            <h1 className='text-4xl font-bold'>Share Your Knowledge</h1>
                             <p>
-                                Connect with experienced tutors and improve your skills<br />through personalized online learning sessions designed for your goals.
+                                Become a tutor and help students achieve their learning goals. <br />Create tutoring sessions and connect with learners worldwide.
                             </p>
                             <Link href={'/tutors'} className='btn bg-[#7AA93C] border-0 text-xl text-white'>
-                                Find a Tutor
+                                Add a Tutor
                             </Link>
                         </div>
                         <Image
-                            src={'/slide1.jpg'}
+                            src={'/slide-2.jpg'}
                             alt='banner image'
                             width={1600}
                             height={500}
@@ -67,16 +69,16 @@ const Banner = () => {
                 <SwiperSlide>
                     <div className="relative md:w-full w-3xl">
                         <div className='absolute ml-20 mt-10 space-y-2'>
-                            <h1 className='text-4xl font-bold'>Learn From Expert Tutors</h1>
+                            <h1 className='text-4xl font-bold'>Manage Your Learning Journey</h1>
                             <p>
-                                Connect with experienced tutors and improve your skills<br />through personalized online learning sessions designed for your goals.
+                               Keep track of your tutors and booked sessions in one place,<br />making it easy to stay organized and continue learning.
                             </p>
                             <Link href={'/tutors'} className='btn bg-[#7AA93C] border-0 text-xl text-white'>
-                                Find a Tutor
+                                View My Sessions
                             </Link>
                         </div>
                         <Image
-                            src={'/slide1.jpg'}
+                            src={'/slide-3.jpg'}
                             alt='banner image'
                             width={1600}
                             height={500}
