@@ -1,0 +1,62 @@
+import { headers } from 'next/headers';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+
+const BookedSessionPage = async () => {
+
+    const session = await auth.api.getToken({
+        headers: await headers()
+    })
+
+    const NotFound = () => {
+        return (
+            <div className="p-12 text-center bg-slate-50 border rounded-2xl">
+                <p className="mb-4">No courses yet</p>
+
+                <Link href="/courses">
+                    <button>Browse Courses</button>
+                </Link>
+            </div>
+        );
+
+    };
+
+    return (
+        <div className="md:w-7xl mx-auto mt-20 mb-20 h-screen">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+                {/* Profile */}
+                <div className="w-full md:w-1/4">
+                    <div className="p-6 bg-white border rounded-2xl">
+                        <Image
+                            src="https://ui-avatars.com/api/?name=Test+Instructor&background=random"
+                            alt="profile"
+                            width={96}
+                            height={96}
+                            className="w-24 h-24 rounded-full"
+                        />
+
+                        <h2 className="text-xl font-bold mt-4">
+                            Test Instructor
+                        </h2>
+                        <p className="text-sm text-slate-500">
+                            test@gmail.com
+                        </p>
+                    </div>
+                </div>
+
+                {/* Enrollments */}
+                <div className="w-full md:w-3/4">
+                    <h1 className="text-3xl font-bold mb-6">My Enrolled Courses</h1>
+
+                    <div className="space-y-4">
+                        {/* <TutorsCard /> */}
+                    </div>
+
+                </div>
+            </div>
+        </div >
+    );
+}
+
+export default BookedSessionPage;

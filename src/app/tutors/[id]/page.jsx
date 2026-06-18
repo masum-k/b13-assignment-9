@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth';
-import Link from 'daisyUI/components/link';
 import { headers } from 'next/headers';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 
@@ -74,7 +74,7 @@ const DetailsPage = async ({ params }) => {
                         </div>
                     </div>
                     <div className="card-actions">
-                        <button className="btn bg-[#7AA93C] text-white">Book Session</button>
+                        <Link href={"/book-session"} className="btn bg-[#7AA93C] text-white">Book Session</Link>
                     </div>
                 </div>
             </div>

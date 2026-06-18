@@ -17,7 +17,6 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const Banner = () => {
     return (
-
         <div className='md:w-full w-3xl'>
 
             <Swiper
