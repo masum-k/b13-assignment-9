@@ -1,7 +1,7 @@
+import BookButton from '@/components/BookButton';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 
@@ -45,11 +45,11 @@ const DetailsPage = async ({ params }) => {
             <div className="card bg-base-100 md:w-2xl mx-auto shadow-sm pt-10">
                 <figure>
                     <Image
-                        src={tutor.image}
-                        alt={tutor.name}
                         width={300}
                         height={300}
-                        className='rounded-xl'
+                        src={tutor.image || " "}
+                        alt={tutor.name || "Name"}
+                        className="rounded-xl h-72 "
                     />
                 </figure>
                 <div className="card-body items-center text-center">
@@ -73,9 +73,7 @@ const DetailsPage = async ({ params }) => {
                             <p>${tutor.hourlyRate}</p>
                         </div>
                     </div>
-                    <div className="card-actions">
-                        <Link href={"/book-session"} className="btn bg-[#7AA93C] text-white">Book Session</Link>
-                    </div>
+                    <BookButton tutor={tutor} />
                 </div>
             </div>
         </div>

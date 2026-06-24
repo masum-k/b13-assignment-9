@@ -25,9 +25,11 @@ const AllTutors = async () => {
                                 <Image
                                     width={300}
                                     height={300}
-                                    src={tutor.image}
-                                    alt={tutor.name}
-                                    className="rounded-xl h-72 "
+                                    // If tutor.image is empty or missing, it falls back to a placeholder
+                                    src={tutor?.image || "/images/default-avatar.png"}
+                                    // Always provide a fallback string for the alt text too
+                                    alt={tutor?.name ? `${tutor.name}'s profile` : "Tutor profile picture"}
+                                    className="rounded-xl h-72 object-cover"
                                 />
                             </figure>
                             <div className="card-body items-center text-center">
