@@ -17,7 +17,7 @@ const AllTutors = async () => {
             <div className='text-center'>
                 <h1 className='font-bold text-4xl'>Available Tutor</h1>
             </div>
-            <div className='md:grid grid-cols-3 gap-4 mt-10'>
+            <div className='md:grid grid-cols-3 gap-4 mt-10 mb-20'>
                 {
                     tutorDataRes.map(tutor => (
                         <div key={tutor._id} className="card bg-base-100 shadow-sm ">
@@ -25,9 +25,7 @@ const AllTutors = async () => {
                                 <Image
                                     width={300}
                                     height={300}
-                                    // If tutor.image is empty or missing, it falls back to a placeholder
                                     src={tutor?.image || "/images/default-avatar.png"}
-                                    // Always provide a fallback string for the alt text too
                                     alt={tutor?.name ? `${tutor.name}'s profile` : "Tutor profile picture"}
                                     className="rounded-xl h-72 object-cover"
                                 />
