@@ -1,3 +1,5 @@
+import SessionCard from '@/components/SessionCard';
+import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -5,7 +7,7 @@ import React from 'react';
 
 const BookedSessionPage = async () => {
 
-    const session = await auth.api.getToken({
+    const {token} = await auth.api.getToken({
         headers: await headers()
     })
 
@@ -47,10 +49,10 @@ const BookedSessionPage = async () => {
 
                 {/* Enrollments */}
                 <div className="w-full md:w-3/4">
-                    <h1 className="text-3xl font-bold mb-6">My Enrolled Courses</h1>
+                    <h1 className="text-3xl font-bold mb-6">My Booked Session</h1>
 
                     <div className="space-y-4">
-                        {/* <TutorsCard /> */}
+                        <SessionCard />
                     </div>
 
                 </div>

@@ -1,3 +1,9 @@
+const dns = require("dns")
+dns.setServers([
+  "1.1.1.1",
+  '8.8.8.8'
+])
+
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
@@ -15,6 +21,10 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+
+  advanced: {
+        generateJWKS: true 
+    },
 
   session: {
     cookueCache: {

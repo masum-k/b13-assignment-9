@@ -9,24 +9,39 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@better-auth/mongo-adapter": "^1.6.13",
-    "better-auth": "^1.6.13",
-    "daisyUI": "npm:daisyui@^5.5.20",
+    "@better-auth/mongo-adapter": "^1.6.20",
+    "@heroui/react": "^3.2.1",
+    "@heroui/styles": "^3.2.1",
+    "better-auth": "^1.6.20",
+    "daisyUI": "npm:daisyui@^5.5.23",
     "kysely": "^0.29.2",
-    "mongodb": "^7.2.0",
+    "mongodb": "^7.3.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-hook-form": "^7.76.1",
+    "react-hook-form": "^7.80.0",
     "react-icons": "^5.6.0",
     "react-toastify": "^11.1.0",
     "swiper": "^12.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "daisyui": "^5.5.20",
+    "daisyui": "^5.5.23",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "tailwindcss": "^4"
-  }
+    "tailwindcss": "^4.3.1"
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masum-k/b13-assignment-9.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masum-k/b13-assignment-9/issues"
+  },
+  "homepage": "https://github.com/masum-k/b13-assignment-9#readme"
 }

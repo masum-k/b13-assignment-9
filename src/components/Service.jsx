@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChalkboardTeacher, FaClock, FaUserGraduate } from 'react-icons/fa';
 
 
-const Rating = () => {
+const Service = () => {
     return (
         <div className='md:w-7xl mx-auto mt-20'>
             <div className='text-center mb-10 space-y-2'>
@@ -75,4 +75,4 @@ const Rating = () => {
     );
 };
 
-export default Rating;
+export default Service;

@@ -1,6 +1,6 @@
 import Banner from "@/components/Banner";
 import Faq from "@/components/Faq";
-import Rating from "@/components/Rating";
+import Service from "@/components/Service";
 import TutorsCard from "@/components/TutorsCard";
 
 
@@ -9,7 +9,7 @@ export default function Home() {
     <div>
       <Banner />
       <TutorsCard />
-      <Rating />
+      <Service />
       <Faq />
     </div>
   );
