@@ -23,7 +23,6 @@ const DetailsPage = async ({ params }) => {
         headers: await headers(),
     });
 
-
     const tutors = await fetchSingleTutor(id, token)
 
     return (
