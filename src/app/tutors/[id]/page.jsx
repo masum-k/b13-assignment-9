@@ -51,7 +51,7 @@ const DetailsPage = async ({ params }) => {
                             <h1 className='font-medium'>Hourly Rate : </h1>
                             <h1 className='font-medium'>Available Session : </h1>
                         </div> 
-                        
+
                         <div>
                             <p>{tutors.country}</p>
                             <p>{tutors.subject}</p>
@@ -60,6 +60,7 @@ const DetailsPage = async ({ params }) => {
                             <p>${tutors.hourlyRate}</p>
                             <p>{10 - tutors.bookedCount || 10}</p>
                         </div>
+                        
                     </div>
                     <BookButton tutors={tutors} />
                 </div>
