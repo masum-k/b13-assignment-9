@@ -25,9 +25,6 @@ const DetailsPage = async ({ params }) => {
 
 
     const tutors = await fetchSingleTutor(id, token)
-    const { subject, country, hourlyRate, rating, experienceYears } = tutors
-
-
 
     return (
         <div className='md:w-7xl mx-auto mt-20 mb-20'>
@@ -53,6 +50,7 @@ const DetailsPage = async ({ params }) => {
                             <h1 className='font-medium'>Experience : </h1>
                             <h1 className='font-medium'>Rating : </h1>
                             <h1 className='font-medium'>Hourly Rate : </h1>
+                            <h1 className='font-medium'>Available Session : </h1>
                         </div>
                         <div>
                             <p>{tutors.country}</p>
@@ -60,6 +58,7 @@ const DetailsPage = async ({ params }) => {
                             <p>{tutors.experienceYears} Years</p>
                             <p>{tutors.rating}</p>
                             <p>${tutors.hourlyRate}</p>
+                            <p>{10 - tutors.bookedCount || 10}</p>
                         </div>
                     </div>
                     <BookButton tutors={tutors} />

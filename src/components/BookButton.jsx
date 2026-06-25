@@ -2,11 +2,13 @@
 
 import { authClient, useSession } from '@/lib/auth-client';
 import { Button } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { toast } from 'react-toastify';
 
 export default function BookButton({ tutors }) {
     const { data: session } = useSession()
+    const router = useRouter()
 
     const handleSession = async () => {
 
@@ -25,6 +27,7 @@ export default function BookButton({ tutors }) {
             subject: tutors?.subject,
             image: tutors?.image,
         }
+        console.log(updatedData)
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booked-session/${tutors?._id}`, {
             method: "PATCH",
@@ -36,7 +39,11 @@ export default function BookButton({ tutors }) {
         })
 
         const data = await res.json()
-        console.log(data)
+        if(!data){
+            toast.error("Something went wrong")
+            return;
+        }
+        router.push("/my-booked-session")
     }
 
     return (
