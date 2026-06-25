@@ -50,7 +50,8 @@ const DetailsPage = async ({ params }) => {
                             <h1 className='font-medium'>Rating : </h1>
                             <h1 className='font-medium'>Hourly Rate : </h1>
                             <h1 className='font-medium'>Available Session : </h1>
-                        </div>
+                        </div> 
+                        
                         <div>
                             <p>{tutors.country}</p>
                             <p>{tutors.subject}</p>
