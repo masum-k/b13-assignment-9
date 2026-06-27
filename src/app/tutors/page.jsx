@@ -17,7 +17,7 @@ const AllTutors = async () => {
             <div className='text-center'>
                 <h1 className='font-bold text-4xl'>Available Tutor</h1>
             </div>
-            <div className='md:grid grid-cols-3 gap-4 mt-10'>
+            <div className='md:grid grid-cols-3 gap-4 mt-10 mb-20'>
                 {
                     tutorDataRes.map(tutor => (
                         <div key={tutor._id} className="card bg-base-100 shadow-sm ">
@@ -25,9 +25,9 @@ const AllTutors = async () => {
                                 <Image
                                     width={300}
                                     height={300}
-                                    src={tutor.image}
-                                    alt={tutor.name}
-                                    className="rounded-xl h-72 "
+                                    src={tutor?.image || "/images/default-avatar.png"}
+                                    alt={tutor?.name ? `${tutor.name}'s profile` : "Tutor profile picture"}
+                                    className="rounded-xl h-72 object-cover"
                                 />
                             </figure>
                             <div className="card-body items-center text-center">
