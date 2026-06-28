@@ -1,7 +1,4 @@
-// import CancelSessionButton from '@/components/CancelSessionButton';
-// import SessionCard from '@/components/SessionCard';
 import { auth } from '@/lib/auth';
-// import { Button} from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,7 +26,7 @@ const BookedSessionPage = async () => {
     const NotFound = () => {
         return (
             <div className="p-12 text-center bg-slate-50 border rounded-2xl">
-                <p className="mb-4">No tutors yet</p>
+                <p className="mb-4">No tutors selected</p>
 
                 <Link href="/tutors">
                     <button>Browse Tutors</button>
@@ -64,9 +61,10 @@ const BookedSessionPage = async () => {
 
                     {bookedSessions?.length === 0 ? (
                         <div className="p-12 text-center bg-slate-50 border rounded-2xl">
-                            <p className="mb-4">No courses yet</p>
+                            <p className="mb-4">No tutors selected</p>
 
-                            <Link href="/tutors">
+                            <Link className='btn' href="/tutors">
+                                Select Tutors
                                 {/* <Button>Select Subject</Button>  */}
                             </Link>
                         </div>
