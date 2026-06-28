@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React from 'react';
 
 const BookedSessionPage = async () => {
@@ -14,14 +15,19 @@ const BookedSessionPage = async () => {
         headers: await headers()
     })
 
+    if (!session?.user || !token) {
+        redirect('/login')
+    }
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booked-session/${session?.user?.id}`, {
         headers: {
             Authorization: `Bearer ${token}`
-        }
+        },
+        cache:"no-store"
     })
 
-    const bookedSessions = await res.json()
-    console.log(bookedSessions)
+
+    const bookedSessions = await res.json() || [];
 
     const NotFound = () => {
         return (
