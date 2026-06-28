@@ -6,7 +6,7 @@ import React from 'react';
 
 
 const fetchSingleTutor = async (id, token) => {
-    const res = await fetch(`http://localhost:3001/tutors/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${id}`, {
         headers: {
             authorization: `Bearer ${token}` || ""
         },

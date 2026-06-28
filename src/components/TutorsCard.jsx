@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const tutorsData = async () => {
-    const res = await fetch("http://localhost:3001/tutors")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors`)
     const data = res.json()
     return data
 }
