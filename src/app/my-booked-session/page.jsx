@@ -23,11 +23,11 @@ const BookedSessionPage = async () => {
         headers: {
             Authorization: `Bearer ${token}`
         },
-        cache:"no-store"
+        cache: "no-store"
     })
 
-
-    const bookedSessions = await res.json() || [];
+    const data = await res.json();
+    const bookedSessions = Array.isArray(data) ? data : [];
 
     const NotFound = () => {
         return (

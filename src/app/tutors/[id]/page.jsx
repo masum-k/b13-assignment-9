@@ -6,13 +6,14 @@ import React from 'react';
 
 
 const fetchSingleTutor = async (id, token) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/${id}`, {
         headers: {
             authorization: `Bearer ${token}` || ""
         },
     });
-    const data = await res.json()
-    return data || {}
+
+    if (!res.ok) return {};
+    return res.json();
 }
 
 const DetailsPage = async ({ params }) => {
@@ -24,6 +25,7 @@ const DetailsPage = async ({ params }) => {
     });
 
     const tutors = await fetchSingleTutor(id, token)
+    console.log(tutors)
 
     return (
         <div className='md:w-7xl mx-auto mt-20 mb-20'>
@@ -32,8 +34,8 @@ const DetailsPage = async ({ params }) => {
                     <Image
                         width={300}
                         height={300}
-                        src={tutors.image || " "}
-                        alt={tutors.name || "Name"}
+                        src={tutors.image}
+                        alt={tutors.name}
                         className="rounded-xl h-72 "
                     />
                 </figure>
@@ -50,7 +52,7 @@ const DetailsPage = async ({ params }) => {
                             <h1 className='font-medium'>Rating : </h1>
                             <h1 className='font-medium'>Hourly Rate : </h1>
                             <h1 className='font-medium'>Available Session : </h1>
-                        </div> 
+                        </div>
 
                         <div>
                             <p>{tutors.country}</p>
@@ -60,7 +62,7 @@ const DetailsPage = async ({ params }) => {
                             <p>${tutors.hourlyRate}</p>
                             <p>{10 - tutors.bookedCount || 10}</p>
                         </div>
-                        
+
                     </div>
                     <BookButton tutors={tutors} />
                 </div>
