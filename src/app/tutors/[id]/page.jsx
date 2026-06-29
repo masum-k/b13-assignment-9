@@ -9,11 +9,10 @@ const fetchSingleTutor = async (id, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/${id}`, {
         headers: {
             authorization: `Bearer ${token}` || ""
-        },
+        }
     });
-
-    if (!res.ok) return {};
-    return res.json();
+    const data = res.json();
+    return data || {};
 }
 
 const DetailsPage = async ({ params }) => {
@@ -31,11 +30,12 @@ const DetailsPage = async ({ params }) => {
         <div className='md:w-7xl mx-auto mt-20 mb-20'>
             <div className="card bg-base-100 md:w-2xl mx-auto shadow-sm pt-10">
                 <figure>
+
                     <Image
                         width={300}
                         height={300}
-                        src={tutors.image}
-                        alt={tutors.name}
+                        src={tutors?.image || "/images/default-avatar.png"}
+                        alt={tutors?.name ? `${tutors.name}'s profile` : "Tutor profile picture"}
                         className="rounded-xl h-72 "
                     />
                 </figure>
