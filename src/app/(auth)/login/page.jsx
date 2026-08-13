@@ -17,6 +17,17 @@ const LoginPage = () => {
         formState: { errors },
     } = useForm()
 
+    const handleGoogleLogin = async () => {
+        const { error } = await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/",
+        });
+
+        if (error) {
+            toast.error(error.message || "Google login failed.");
+        }
+    };
+
     const handleLogin = async (data) => {
         const { email, password } = data
 
@@ -47,6 +58,8 @@ const LoginPage = () => {
                     </div>
                     <div>
                         <button
+                            type="button"
+                            onClick={handleGoogleLogin}
                             className='btn w-full h-12 font-bold rounded-2x1 border-slate-200 hover:bg-slate-58 transition-colors gap-3'
                         >
                             <Image

@@ -1,10 +1,18 @@
 "use client"
 
-import { signOut, useSession } from '@/lib/auth-client';
+import { authClient, signOut, useSession } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+
+const handlegooglelogin = async () => {
+    const data = await authClient.signIn.social({
+        provider: "google",
+    });
+
+    console.log(data)
+}
 
 const Navbar = () => {
 
@@ -58,7 +66,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {!isPending && !session
-                        ? <Link href={"/login"} className="btn bg-[#7AA93C] border-none text-white">Login</Link>
+                        ? <>
+                            <Link href={"/login"} className="btn bg-[#7AA93C] border-none text-white">Login</Link>
+                            <button onClick={handlegooglelogin} className='btn ml-2'>Google</button>
+                        </>
                         : <div className="flex gap-2">
                             <div className="dropdown dropdown-end">
                                 <div className="flex justify-center items-center gap-2">

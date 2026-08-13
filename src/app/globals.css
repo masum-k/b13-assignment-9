@@ -1,2 +1,124 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-geist-sans), sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    transition: all 160ms ease;
+}
+
+[data-theme="dark"] .bg-white {
+    background-color: oklch(25% 0.02 260);
+}
+
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-slate-500 {
+    color: oklch(78% 0.02 260);
+}
+
+[data-theme="dark"] .border-slate-200 {
+    border-color: oklch(35% 0.02 260);
+}
+
+[data-theme="dark"] .bg-slate-50 {
+    background-color: oklch(22% 0.02 260);
+}
+
+[data-theme="dark"] .bg-slate-100 {
+    background-color: oklch(26% 0.02 260);
+}
+
+.container-page {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+    .container-page {
+        width: min(100% - 1rem, 80rem);
+    }
+}
+
+.w-7xl,
+.w-3xl {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .swiper-slide .absolute {
+        position: absolute;
+        inset-inline: 1rem;
+        margin: 0;
+        top: 1rem;
+    }
+
+    .swiper-slide .absolute h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .swiper-slide .absolute p {
+        max-width: 75%;
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .swiper-slide .absolute .btn {
+        font-size: 0.9rem;
+    }
+
+    .navbar .text-3xl {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-slide .absolute {
+        top: 0.75rem;
+    }
+
+    .swiper-slide .absolute p {
+        display: none;
+    }
+
+    .swiper-slide .absolute h1 {
+        font-size: 1.25rem;
+    }
+}
+
+.btn {
+    font-weight: 600;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+.input,
+.select,
+.textarea {
+    border-radius: 0.75rem;
+}
+
+.table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+    .table {
+        min-width: 720px;
+    }
+}

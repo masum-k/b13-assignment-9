@@ -1,54 +1,78 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-import { AlertDialog, Button } from "@heroui/react";
+export default function CancelSessionButton({
+  id,
+  onCancelled,
+}) {
+  const [loading, setLoading] = useState(false);
 
-const CancelEnrollButton = ({ id }) => {
-
-    return (
-        <AlertDialog>
-            <Button
-                color="danger"
-                variant="light"
-                size="sm"
-            >
-                Cancel
-            </Button>
-            <AlertDialog.Backdrop>
-                <AlertDialog.Container>
-                    <AlertDialog.Dialog className="sm:max-w-100">
-                        <AlertDialog.CloseTrigger />
-                        <AlertDialog.Header>
-                            <AlertDialog.Icon status="danger" />
-                            <AlertDialog.Heading>Confirm Cancellation</AlertDialog.Heading>
-                        </AlertDialog.Header>
-                        <AlertDialog.Body>
-                            <p className="text-slate-600">
-                                Are you sure you want to cancel this enrollment? This action cannot be undone and you
-                                will lose access to the course materials.
-                            </p>
-                        </AlertDialog.Body>
-                        <AlertDialog.Footer>
-                            <Button
-                                slot="close"
-                                variant="tertiary"
-                            >
-                                Keep Enrollment
-                            </Button>
-                            <Button
-                                slot="close"
-                                color="danger"
-                                className="font-bold"
-
-                            >
-                                Yes, Cancel
-                            </Button>
-                        </AlertDialog.Footer>
-                    </AlertDialog.Dialog>
-                </AlertDialog.Container>
-            </AlertDialog.Backdrop>
-        </AlertDialog>
+  const cancel = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to cancel this booking?"
     );
-};
 
-export default CancelEnrollButton;
+    if (!confirmed) return;
+
+    setLoading(true);
+
+    try {
+      const { data } = await authClient.token();
+
+      const token = data?.token;
+
+      if (!token) {
+        throw new Error("Authentication failed.");
+      }
+
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/booked-session/cancel/${id}`,
+        {
+          method: "PATCH",
+
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Could not cancel booking."
+        );
+      }
+
+      toast.success(
+        "Booking cancelled successfully."
+      );
+
+      onCancelled?.();
+    } catch (error) {
+      console.error(error);
+
+      toast.error(
+        error.message || "Something went wrong."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Button
+      color="danger"
+      variant="light"
+      size="sm"
+      onPress={cancel}
+      isDisabled={loading}
+    >
+      {loading ? "Cancelling..." : "Cancel"}
+    </Button>
+  );
+}

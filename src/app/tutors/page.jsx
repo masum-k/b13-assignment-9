@@ -1,46 +1,42 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import TutorDirectory from "@/components/TutorDirectory";
+
+export const metadata = {
+    title: "Find Tutors",
+};
 
 const AllTutorsData = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/all`)
-    const data = res.json()
-    return data
-}
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tutors/all`, {
+        cache: "no-store",
+    });
+
+    if (!res.ok) {
+        return [];
+    }
+
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+};
 
 const AllTutors = async () => {
-
-    const tutorDataRes = await AllTutorsData()
+    const tutorDataRes = await AllTutorsData();
 
     return (
-        <div className=' w-7xl mx-auto mt-10'>
-            <div className='text-center'>
-                <h1 className='font-bold text-4xl'>Available Tutor</h1>
+        <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6">
+            <div className="mb-10 text-center">
+                <p className="text-sm font-semibold uppercase tracking-wider text-[#7AA93C]">
+                    Learn with confidence
+                </p>
+                <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
+                    Find Your Tutor
+                </h1>
+                <p className="mx-auto mt-3 max-w-2xl text-base-content/60">
+                    Search by tutor, subject, or institution and narrow results by
+                    registration date.
+                </p>
             </div>
-            <div className='md:grid grid-cols-3 gap-4 mt-10 mb-20'>
-                {
-                    tutorDataRes.map(tutor => (
-                        <div key={tutor._id} className="card bg-base-100 shadow-sm ">
-                            <figure className="px-6 pt-6">
-                                <Image
-                                    width={300}
-                                    height={300}
-                                    src={tutor?.image || "/images/default-avatar.png"}
-                                    alt={tutor?.name ? `${tutor.name}'s profile` : "Tutor profile picture"}
-                                    className="rounded-xl h-72 object-cover"
-                                />
-                            </figure>
-                            <div className="card-body items-center text-center">
-                                <h2 className="card-title">{tutor.name}</h2>
-                                <div className="card-actions">
-                                    <Link href={`/tutors/${tutor._id}`} className="btn bg-[#7AA93C] text-white">Book Session</Link>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
+
+            <TutorDirectory tutors={tutorDataRes} />
+        </section>
     );
 };
 
